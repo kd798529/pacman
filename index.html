@@ -50,10 +50,27 @@
 
     <div class="Pacman__mouth"></div>
     <div class="Pacman__eye">
-      <div class="Pacman__eye__pupil"></div>
+      <div class="Pacman__eye__pupil" id="eye"></div>
     </div>
-
   </div>
+  <script>
+    const mouseMove = (event) => {
+      const xcordinate = event.screenX;
+      const ycordinate = event.screenY;
+      const domRect = document.getElementById('eye').getBoundingClientRect();
+      //
+      const eye = document.getElementById('eye');
+      if(xcordinate > domRect.left && xcordinate < domRect.left + domRect.width) {
+        eye.style.left += domRect.left - xcordinate + 'px'
+        console.log(domRect.left - xcordinate)
+      }
+      if(ycordinate > domRect.top && ycordinate < domRect.top + domRect.height) {
+        eye.style.top += domRect.top - ycordinate + 'px'
+        console.log(domRect.top - ycordinate)
+      }
+    }
+    document.documentElement.addEventListener('mousemove', mouseMove);
+  </script>
 
 </body>
 </html>
